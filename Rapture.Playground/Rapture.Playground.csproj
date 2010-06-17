@@ -38,6 +38,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyBuiltAtAttribute.cs" />
+    <Compile Include="Properties\AssemblyBuiltByAttribute.cs" />
+    <Compile Include="Properties\AssemblyBuiltFromAttribute.cs" />
+    <Compile Include="Properties\AssemblyBuiltOnAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Properties\AssemblyInfo.template" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -57,4 +62,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <PreBuildEvent>"$(ProjectDir)..\ThirdPartyStuff\autoversioner\AutoVersioner.exe" "$(ProjectDir)$(ProjectFileName)" "$(ProjectDir)Properties\AssemblyInfo.template" "$(ProjectDir)Properties\AssemblyInfo.cs"</PreBuildEvent>
+  </PropertyGroup>
 </Project>
