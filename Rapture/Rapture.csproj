@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{55B8C6CB-D4EE-4EF6-8760-E68470005317}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rapture</RootNamespace>
+    <AssemblyName>Rapture</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ast\Traversal\Visitors\CnfDisassembler.cs" />
+    <Compile Include="Helpers\CollectionHelper.cs" />
+    <Compile Include="Helpers\ItemListChangeAction.cs" />
+    <Compile Include="Helpers\ItemListChangeEventArgs.cs" />
+    <Compile Include="Helpers\TrackableList.cs" />
+    <Compile Include="Helpers\TraversalHelper.cs" />
+    <Compile Include="Helpers\TreeNodeHelper.cs" />
+    <Compile Include="Ast\Nodes\Abstract\IAstTreeNode.cs" />
+    <Compile Include="Ast\Traversal\Strategies\BreadthFirstTraversalStrategy.cs" />
+    <Compile Include="Ast\Traversal\Strategies\DepthFirstTraversalStrategy.cs" />
+    <Compile Include="Ast\Traversal\Strategies\ITraversalStrategy.cs" />
+    <Compile Include="Ast\Traversal\Strategies\TraversalStrategy.cs" />
+    <Compile Include="Ast\Traversal\Visitors\Abstract\IAstXformer.cs" />
+    <Compile Include="Ast\Traversal\Visitors\Abstract\ZeroActionXformer.cs" />
+    <Compile Include="Ast\Traversal\Visitors\AstValidator.cs" />
+    <Compile Include="Ast\Traversal\Visitors\CnfTransformer.cs" />
+    <Compile Include="Ast\Traversal\Visitors\TreeDumper.cs" />
+    <Compile Include="Ast\Traversal\Visitors\Abstract\IAstVisitorCompliantNode.cs" />
+    <Compile Include="Ast\Traversal\AstTraverser.cs" />
+    <Compile Include="Ast\Traversal\Visitors\Abstract\IAstVisitor.cs" />
+    <Compile Include="Ast\Traversal\RestartTraversalException.cs" />
+    <Compile Include="Ast\Traversal\Visitors\AritySimplifier.cs" />
+    <Compile Include="Ast\Traversal\Visitors\Abstract\ZeroActionVisitor.cs" />
+    <Compile Include="Helpers\ArityHelper.cs" />
+    <Compile Include="Ast\Nodes\AndNode.cs" />
+    <Compile Include="Ast\Nodes\ImplicationNode.cs" />
+    <Compile Include="Ast\L1Expression.cs" />
+    <Compile Include="Ast\Nodes\NegationNode.cs" />
+    <Compile Include="Ast\Nodes\OrNode.cs" />
+    <Compile Include="Ast\Nodes\ConstantNode.cs" />
+    <Compile Include="Ast\Nodes\Abstract\LiteralNode.cs" />
+    <Compile Include="Ast\Nodes\Abstract\AstTreeNode.cs" />
+    <Compile Include="Ast\Nodes\TermNode.cs" />
+    <Compile Include="Ast\Nodes\VariableNode.cs" />
+    <Compile Include="Helpers\StampHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resolution\Xforms.cs" />
+    <Compile Include="Resolution\NaiveResolvent.cs" />
+    <Compile Include="RuleSet.cs" />
+    <Compile Include="Resolution\Clause.cs" />
+    <Compile Include="Resolution\Resolver.cs" />
+    <Compile Include="Resolution\Term.cs" />
+    <Compile Include="Resolution\Prover.cs" />
+    <Compile Include="Ast\Nodes\Abstract\ExpressionNode.cs" />
+    <Compile Include="Resolution\Disassembler.cs" />
+    <Compile Include="Ast\LinqAstParser.cs" />
+    <Compile Include="Resolution\Unifier.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AssemblyInfo.template" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PreBuildEvent>echo Synchronize assembly revision number with SVN revision
+"$(ProjectDir)..\ThirdPartyStuff\tortoisesVN\subwcrev.bat" "$(ProjectDir)." "$(ProjectDir)Properties\AssemblyInfo.template" "$(ProjectDir)Properties\AssemblyInfo.cs"</PreBuildEvent>
+  </PropertyGroup>
+</Project>

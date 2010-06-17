@@ -1,0 +1,7 @@
+glob:*.user
+glob:*.suo
+glob:Rapture/bin/
+glob:Rapture/obj/
+glob:Rapture.Playground/bin/
+glob:Rapture.Playground/obj/
+glob:*AssemblyInfo.cs
