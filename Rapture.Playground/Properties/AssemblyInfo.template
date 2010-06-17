@@ -12,7 +12,7 @@ using Rapture.Playground.Properties;
 [assembly: AssemblyCopyright("Copyright © 2008-2010 xeno.by")]
 
 [assembly: ComVisible(false)]
-[assembly: InternalsVisibleTo("Rapture.Playground")]
+// [assembly: InternalsVisibleTo("")]
 
 [assembly: Guid("259984bf-3ae8-4744-8c53-7d5bd0614bb4")]
 [assembly: AssemblyVersion("0.0.*")]
